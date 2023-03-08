@@ -23,6 +23,6 @@ public class Componente1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print("Componente 1 - update method ");
     }
 }
