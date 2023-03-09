@@ -35,12 +35,30 @@ public class CreaCuboDeCero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetCube();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void SetCube() {
+        objtoSpawn = new GameObject("CuboCode");
+        objtoSpawn.AddComponent<MeshFilter>();
+        var meshFilter = objtoSpawn.GetComponent<MeshFilter>().mesh;
+        meshFilter.Clear();
+        meshFilter.vertices = vertices;
+        meshFilter.triangles = tringulos;
+        meshFilter.Optimize();
+        meshFilter.RecalculateNormals();//Mejora en el renderizado
+        objtoSpawn.AddComponent<BoxCollider>();
+        var boxCollider = objtoSpawn.GetComponent<BoxCollider>();
+        boxCollider.center = new Vector3(0.5f, 0.5f, 0.5f);
+        objtoSpawn.AddComponent<MeshRenderer>();
+        var meshRendererMaterial = objtoSpawn.GetComponent<MeshRenderer>().material;
+        meshRendererMaterial.color = Color.white;
+        objtoSpawn.transform.position = Vector3.one;
     }
 }
