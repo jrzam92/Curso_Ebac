@@ -50,7 +50,7 @@ public class CubeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GenerateCubes();
+        //GenerateCubes();
     }
     public void SetCube()
     {
