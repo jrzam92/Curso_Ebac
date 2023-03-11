@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
 {
+    GameObject go; //Objeto vacio para la instancia del prefab
     GameObject objtoSpawn;
     Vector3[] vertices = {
     new Vector3(0,0,0),//Vertice 0
@@ -39,7 +40,15 @@ public class CubeSpawner : MonoBehaviour
 
     private void Awake()
     {
-        SetCube();
+        //Se instancia el objeto GamObject para el prefab 
+        go = Instantiate(prefabCubo);
+        //Se inicializa el renderizado para el objeto gameobject 
+        Renderer rend = go.GetComponent<Renderer>();
+        //Se realiza el cambio de color 
+        rend.material.color = Color.blue;
+
+        print("Desde Awake");
+
     }
     // Start is called before the first frame update
     void Start()
@@ -105,11 +114,15 @@ public class CubeSpawner : MonoBehaviour
     }
     private void OnEnable()
     {
+        go = Instantiate(prefabCubo);
+        Renderer rend = go.GetComponent<Renderer>();
+        rend.material.color = Color.green;
 
-        SetCube();
     }
     private void OnDisable()
     {
-        SetCube();
+        go = Instantiate(prefabCubo);
+        Renderer rend = go.GetComponent<Renderer>();
+        rend.material.color = Color.yellow;
     }
 }
