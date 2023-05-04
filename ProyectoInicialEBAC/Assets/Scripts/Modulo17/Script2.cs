@@ -5,38 +5,31 @@ using UnityEngine;
 public class Script2 : MonoBehaviour
 {
     public bool ownBool2 = false;
-    GameObject n_cube1;
-    GameObject prefab_cube;
-    /// <summary>
-    /// Consturctor para poder usarlo en otros scripts 
-    /// </summary>
-    /// <param name="_ownBool1"></param>
-    public Script2(bool _ownBool2)
-    {
-        ownBool2 = _ownBool2;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    GameObject go;
+    public GameObject prefab_cube;
+    
     private void FixedUpdate()
     {
 
+        print("entro a script 1 ");
+        go = Resources.Load("cb1") as GameObject;
+        go = Instantiate(prefab_cube);
         if (ownBool2)
         {
-            //GO1
-            n_cube1 = Instantiate(prefab_cube);
-            Renderer rend = n_cube1.GetComponent<Renderer>();
-            rend.material.color = Color.white;
+
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.blue;
+            Destroy(go);
+            ownBool2 = false;
+        }
+        else
+        {
+
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.yellow;
+            Destroy(go);
             ownBool2 = true;
         }
-        
+
     }
 }

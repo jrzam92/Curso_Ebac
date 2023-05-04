@@ -146,7 +146,7 @@ public class VBooleans : MonoBehaviour
 
         val1 = Random.Range(limiteInferior, limiteSuperior);
         print(val1);
-        bool isRed = true;
+        bool isRed = SeleccionarColor.rojo.ToString().Equals("rojo");
         switch(val1)
         {
             case (int)SeleccionarColor.rojo when isRed==true: //se puede agregar condicionantes con un when

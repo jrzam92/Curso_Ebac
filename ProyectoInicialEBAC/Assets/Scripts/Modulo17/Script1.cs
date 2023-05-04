@@ -5,26 +5,63 @@ using UnityEngine;
 public class Script1 : MonoBehaviour
 {
     public bool ownBool1 = true;
-    GameObject n_cube1;
-    GameObject prefab_cube;
+     GameObject go;
+    public GameObject prefab_cube;
+    private void Awake()
+    {
+        print("entro a script 1 ");
+        go = Resources.Load("cb1") as GameObject;
+        go=Instantiate(prefab_cube);
+        if (ownBool1)
+        {
 
-    /// <summary>
-    /// Consturctor para poder usarlo en otros scripts 
-    /// </summary>
-    public Script1()
-    {
-          
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.black;
+            ownBool1 = false;
+        }
+        else
+        {
 
-    // Update is called once per frame
-    void Update()
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.yellow;
+            ownBool1 = true;
+        }
+    }
+    private void Start()
     {
-        
+        if (ownBool1)
+        {
+            //GO1
+            go = Instantiate(prefab_cube);
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.white;
+            ownBool1 = false;
+        }
+        else
+        {
+            go = Instantiate(prefab_cube);
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.black;
+            ownBool1 = true;
+        }
+    }
+    private void Update()
+    {
+        if (ownBool1)
+        {
+            //GO1
+            go = Instantiate(prefab_cube);
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.white;
+            ownBool1 = false;
+        }
+        else
+        {
+            go = Instantiate(prefab_cube);
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.black;
+            ownBool1 = true;
+        }
     }
     private void FixedUpdate()
     {
@@ -32,11 +69,18 @@ public class Script1 : MonoBehaviour
         if (ownBool1)
         {
             //GO1
-            n_cube1 = Instantiate(prefab_cube);
-            Renderer rend = n_cube1.GetComponent<Renderer>();
+            go = Instantiate(prefab_cube);
+            Renderer rend = go.GetComponent<Renderer>();
             rend.material.color = Color.white;
-            ownBool1=false;
+            ownBool1 = false;
         }
-        
+        else
+        {
+            go = Instantiate(prefab_cube);
+            Renderer rend = go.GetComponent<Renderer>();
+            rend.material.color = Color.black;
+            ownBool1 = true;
+        }
+
     }
 }

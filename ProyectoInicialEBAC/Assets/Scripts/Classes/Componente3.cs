@@ -6,7 +6,7 @@ public class Componente3 : MonoBehaviour
 {
     private void Awake()
     {
-        print("Componente3 Awake");
+        //print("Componente3 Awake");
     }
     // Start is called before the first frame update
     void Start()
