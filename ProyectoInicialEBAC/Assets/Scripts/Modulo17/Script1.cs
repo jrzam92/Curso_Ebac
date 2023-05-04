@@ -10,7 +10,7 @@ public class Script1 : MonoBehaviour
     private void Awake()
     {
         print("entro a script 1 ");
-        go = Resources.Load("cb1") as GameObject;
+        //go = Resources.Load("cb1") as GameObject;
         go=Instantiate(prefab_cube);
         if (ownBool1)
         {
