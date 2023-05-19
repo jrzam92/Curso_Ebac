@@ -4,51 +4,30 @@ using UnityEngine;
 
 public class Script2 : MonoBehaviour
 {
-    public bool ownBool2 = false;
-    GameObject go2;
-    public GameObject prefab_cube2;
+    public boolx2 ownBool2;
+    public GameObject prefab_cube;
     private void Awake()
     {
-        print("entro a script 2 ");
-        //go = Resources.Load("cb1") as GameObject;
-        go2 = Instantiate(prefab_cube2);
-        if (ownBool2)
-        {
-
-            Renderer rend = go2.GetComponent<Renderer>();
-            rend.material.color = Color.blue;
-            Destroy(go2);
-            ownBool2 = false;
-        }
-        else
-        {
-
-            Renderer rend = go2.GetComponent<Renderer>();
-            rend.material.color = Color.yellow;
-            Destroy(go2);
-            ownBool2 = true;
-        }
+        //if (ownBool2.Bool_2)
+        //{
+        //    prefab_cube.GetComponent<Renderer>().material.color = Color.white;
+        //}
+        //else
+        //{
+            
+        //    prefab_cube.GetComponent<Renderer>().material.color = Color.black;
+        //}
     }
     private void FixedUpdate()
     {
-
-        print("entro a script 2 ");
-        //go = Resources.Load("cb1") as GameObject;
-        go2 = Instantiate(prefab_cube2);
-        if (ownBool2)
+        if (ownBool2.Bool_2)
         {
-
-            Renderer rend = go2.GetComponent<Renderer>();
-            rend.material.color = Color.blue;
-            ownBool2 = false;
+            prefab_cube.GetComponent<Renderer>().material.color = Color.white;
         }
         else
         {
 
-            Renderer rend = go2.GetComponent<Renderer>();
-            rend.material.color = Color.yellow;
-            ownBool2 = true;
+            prefab_cube.GetComponent<Renderer>().material.color = Color.black;
         }
-
     }
 }

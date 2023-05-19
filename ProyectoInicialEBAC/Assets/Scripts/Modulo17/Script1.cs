@@ -4,83 +4,28 @@ using UnityEngine;
 
 public class Script1 : MonoBehaviour
 {
-    public bool ownBool1 = true;
-     GameObject go;
+    public boolx1 ownBool1 ;
     public GameObject prefab_cube;
     private void Awake()
     {
-        print("entro a script 1 ");
-        //go = Resources.Load("cb1") as GameObject;
-        go=Instantiate(prefab_cube);
-        if (ownBool1)
-        {
-
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.black;
-            ownBool1 = false;
-        }
-        else
-        {
-
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.yellow;
-            ownBool1 = true;
-        }
-    }
-    private void Start()
-    {
-        if (ownBool1)
-        {
-            //GO1
-            go = Instantiate(prefab_cube);
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.white;
-            ownBool1 = false;
-        }
-        else
-        {
-            go = Instantiate(prefab_cube);
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.black;
-            ownBool1 = true;
-        }
-    }
-    private void Update()
-    {
-        if (ownBool1)
-        {
-            //GO1
-            go = Instantiate(prefab_cube);
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.white;
-            ownBool1 = false;
-        }
-        else
-        {
-            go = Instantiate(prefab_cube);
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.black;
-            ownBool1 = true;
-        }
+        //if (ownBool1.Bool_1)
+        //{
+        //    prefab_cube.GetComponent<Renderer>().material.color = Color.black;
+        //}
+        //else
+        //{
+        //    prefab_cube.GetComponent<Renderer>().material.color = Color.white;
+        //}
     }
     private void FixedUpdate()
     {
-
-        if (ownBool1)
+        if (ownBool1.Bool_1)
         {
-            //GO1
-            go = Instantiate(prefab_cube);
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.white;
-            ownBool1 = false;
+            prefab_cube.GetComponent<Renderer>().material.color = Color.black;
         }
         else
         {
-            go = Instantiate(prefab_cube);
-            Renderer rend = go.GetComponent<Renderer>();
-            rend.material.color = Color.black;
-            ownBool1 = true;
+            prefab_cube.GetComponent<Renderer>().material.color = Color.white;
         }
-
     }
 }
