@@ -6,17 +6,7 @@ public class Script1 : MonoBehaviour
 {
     public boolx1 ownBool1 ;
     public GameObject prefab_cube;
-    private void Awake()
-    {
-        //if (ownBool1.Bool_1)
-        //{
-        //    prefab_cube.GetComponent<Renderer>().material.color = Color.black;
-        //}
-        //else
-        //{
-        //    prefab_cube.GetComponent<Renderer>().material.color = Color.white;
-        //}
-    }
+     
     private void FixedUpdate()
     {
         if (ownBool1.Bool_1)
