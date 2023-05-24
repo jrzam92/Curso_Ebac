@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Instanciador : MonoBehaviour
 {
-    public GameObject prefabGO;
+   
 
     public int randomPos = 0;
 
@@ -21,37 +21,49 @@ public class Instanciador : MonoBehaviour
 
     private void Update()
     {
-
+        //Variables para poder realizar el movimiento en el canvas 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+        //Variable para poder dar direccion entre el eje x y el eje y 
         Vector2 direccion = new Vector2(x, y);
-        prefabGO.GetComponent<Rigidbody>().velocity = new Vector2(direccion.x * velocidadMov, direccion.y * velocidadMov);
-        print(direccion.y);
-        if (direccion != Vector2.zero)
+        //Se ocupa para mandar directamente el objeto que se esta usando el mismo script 
+        GetComponent<Rigidbody>().velocity = new Vector2(direccion.x * velocidadMov, direccion.y * velocidadMov);
+
+        randomPos = Random.Range(1, 2);
+        print(randomPos);
+        switch (randomPos)
         {
-            
-            if (direccion.x < 0 && transform.localScale.x > 0 && isLeft)
+            case 1:
+                GetComponent<Rigidbody>().transform.position = Pos1;
+                break;
+            case 2:
+                GetComponent<Rigidbody>().transform.position = Pos2;
+                break;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow)) //condicion cuando se presiona la tecla Derecha
+        {
+           
+           GetComponent<Renderer>().material.color = ColorDerecho;
+            if (direccion.x < 0) //si direccion x es menor a 0 realiza lo siguiente
             {
+                //el objeto se mueve a la derecha 
                 transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
                 isRight = false;
             }
-            else if (direccion.x > 0 && transform.localScale.x < 0 && isRight)
-            {
-                transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
-                isLeft = false;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow)) //Derecha
-        {
-            prefabGO.GetComponent<Renderer>().material.color = ColorDerecho;
-            
             randomPos += 1;
             print(randomPos);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow)) //Izquierda
+        else if (Input.GetKey(KeyCode.LeftArrow)) //condicion cuando se presiona la tecla Izquierda
         {
-            prefabGO.GetComponent<Renderer>().material.color = ColorIzquierdo;
+            if (direccion.x > 0)//si direccion x es mayor a 0 realiza lo siguiente
+            {
+                //el objeto se mueve a la izquierda
+                transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
+                isLeft = false;
+            }
+            //forma en la que se puede cambiar el color del propio objeto   
+            GetComponent<Renderer>().material.color = ColorIzquierdo;
             randomPos += 1;
             print(randomPos);
         }
