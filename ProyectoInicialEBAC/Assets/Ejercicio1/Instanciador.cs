@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Instanciador : MonoBehaviour
@@ -15,57 +16,50 @@ public class Instanciador : MonoBehaviour
     public Color ColorIzquierdo= Color.magenta;
 
 
-    public bool isLeft = true;
-    public bool isRight = true;
-    public float velocidadMov = 10;
-
     private void Update()
     {
         //Variables para poder realizar el movimiento en el canvas 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        //Variable para poder dar direccion entre el eje x y el eje y 
-        Vector2 direccion = new Vector2(x, y);
-        //Se ocupa para mandar directamente el objeto que se esta usando el mismo script 
-        GetComponent<Rigidbody>().velocity = new Vector2(direccion.x * velocidadMov, direccion.y * velocidadMov);
-
-        randomPos = Random.Range(1, 2);
-        print(randomPos);
-        switch (randomPos)
-        {
-            case 1:
-                GetComponent<Rigidbody>().transform.position = Pos1;
-                break;
-            case 2:
-                GetComponent<Rigidbody>().transform.position = Pos2;
-                break;
-        }
+        
+         
+       
+        //randomPos = Random.Range(1, 2);
+        //print(randomPos);
+        //switch (randomPos)
+        //{
+        //    case 1:
+        //        transform.position = Pos1;
+        //        break;
+        //    case 2:
+        //        transform.position = Pos2;
+        //        break;
+        //}
 
         if (Input.GetKey(KeyCode.RightArrow)) //condicion cuando se presiona la tecla Derecha
         {
            
+            GameObject cubeRight = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cubeRight.transform.position = new Vector3(3.83f, 1.87f, 7.27f);
+            cubeRight.transform.localScale = new Vector3(.5f, .5f, .5f);
+            cubeRight.GetComponent<Renderer>().material.color = Color.red;
+
            GetComponent<Renderer>().material.color = ColorDerecho;
-            if (direccion.x < 0) //si direccion x es menor a 0 realiza lo siguiente
-            {
-                //el objeto se mueve a la derecha 
-                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-                isRight = false;
-            }
-            randomPos += 1;
-            print(randomPos);
+            
+
         }
         else if (Input.GetKey(KeyCode.LeftArrow)) //condicion cuando se presiona la tecla Izquierda
         {
-            if (direccion.x > 0)//si direccion x es mayor a 0 realiza lo siguiente
-            {
-                //el objeto se mueve a la izquierda
-                transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
-                isLeft = false;
-            }
+
+
+
+            GameObject cubeLeft = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cubeLeft.transform.position = new Vector3(-2.42f, 2.1f, 14.67f);
+            cubeLeft.transform.localScale= new Vector3(.5f, .5f, .5f);
+            cubeLeft.GetComponent<Renderer>().material.color = Color.blue;
             //forma en la que se puede cambiar el color del propio objeto   
             GetComponent<Renderer>().material.color = ColorIzquierdo;
-            randomPos += 1;
-            print(randomPos);
+             
         }
     }
 }

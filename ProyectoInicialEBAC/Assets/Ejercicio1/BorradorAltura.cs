@@ -7,9 +7,9 @@ public class BorradorAltura : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (GetComponent<Rigidbody>().position.y <= -6)
+        if (transform.position.y <= -6)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
