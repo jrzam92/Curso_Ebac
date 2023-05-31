@@ -5,14 +5,17 @@ public class NumeroDeVeces : MonoBehaviour
 {
     public int VecesQueInstancian = 0;
     public Text textoNum;
+    
 
     private void Start()
     {
-        textoNum = GetComponent<Text>();
+
+        textoNum.text =$"{VecesQueInstancian}" ;
     }
 
     private void Update()
     {
-        
+
+        textoNum.text= $"{VecesQueInstancian}";
     }
 }

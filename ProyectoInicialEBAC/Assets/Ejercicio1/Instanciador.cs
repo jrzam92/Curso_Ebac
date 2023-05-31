@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Instanciador : MonoBehaviour
 {
-
+    public GameObject prefabNumVeces;
+    GameObject _prefabNumVeces;
     public GameObject prefabLeft;
     public GameObject prefabRight;
     GameObject cubeRight;
@@ -21,22 +22,29 @@ public class Instanciador : MonoBehaviour
 
     private void Update()
     {
-        //Variables para poder realizar el movimiento en el canvas 
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        
+        this._prefabNumVeces = Instantiate(prefabNumVeces);
+      
          RandomColor randomColor = new RandomColor();
-       
         
+
+
 
         if (Input.GetKey(KeyCode.RightArrow)) //condicion cuando se presiona la tecla Derecha
         {
 
+            prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian += 1;
+            if (prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian == 5)
+            {
+                print($"Verdadero valor :   {prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian}");
+            }
+            else
+            {
+                print($"Falso valor :   {prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian}");
+            }
             this.cubeRight = Instantiate(prefabRight);
             this.cubeRight.transform.position = new Vector3(3.83f, 1.87f, 7.27f);
             this.cubeRight.transform.localScale = new Vector3(.5f, .5f, .5f);
             this.cubeRight.GetComponent<Renderer>().material.color = Color.red;
-
             //randomColor.ChangeRandomColor(this.cubeRight, ColorDerecho);
             randomPos = Random.Range(1, 3);
             
@@ -56,7 +64,15 @@ public class Instanciador : MonoBehaviour
         {
 
 
-
+            prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian -= 1;
+            if (prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian == 5)
+            {
+                print("Verdadero valor : " + prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian);
+            }
+            else
+            {
+                print("Falso valor : " + prefabNumVeces.GetComponent<NumeroDeVeces>().VecesQueInstancian);
+            }
             this.cubeLeft =Instantiate(prefabLeft);
             this.cubeLeft.transform.position = new Vector3(-2.42f, 2.1f, 14.67f);
             this.cubeLeft.transform.localScale= new Vector3(.5f, .5f, .5f);
