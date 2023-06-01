@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Script1 : MonoBehaviour
 {
-    public boolx1 ownBool1 ;
-    public GameObject prefab_cube;
+    public bool ownBool1 = false;
+    
      
     private void FixedUpdate()
     {
-        if (ownBool1.Bool_1)
+        if (ownBool1)
         {
-            prefab_cube.GetComponent<Renderer>().material.color = Color.black;
+            ownBool1 = true;
+            GetComponent<MeshRenderer>().material.color = Color.white;
         }
         else
         {
-            prefab_cube.GetComponent<Renderer>().material.color = Color.white;
+            ownBool1 = false;
+            GetComponent<MeshRenderer>().material.color = Color.black;
         }
     }
 }

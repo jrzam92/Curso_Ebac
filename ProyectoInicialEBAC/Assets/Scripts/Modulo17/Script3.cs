@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Script3 : MonoBehaviour
 {
-    public boolx1 ownBool1;
-    public boolx2 ownBool2;
-    public GameObject prefab_cube;
-    public boolx3 Bool_3;
-    public bool Bool_y;
+    public Script1 Bool1;
+    public Script2 Bool2; 
+    public bool Bool_3 = false;
+    
     private void FixedUpdate()
     {
 
-        if (ownBool1.Bool_1 && ownBool2.Bool_2)
+        if (Bool1.ownBool1 || Bool2.ownBool2)
         {
-            Bool_3.Bool_3=true;
-            Bool_y = false;
-            prefab_cube.GetComponent<Renderer>().material.color = Color.red;
+            Bool_3=true;
+            
+            GetComponent<MeshRenderer>().material.color = Color.white;
         }
        
       
         else 
         {
-            prefab_cube.GetComponent<Renderer>().material.color = Color.cyan;
+            Bool_3 = false;
+            GetComponent<MeshRenderer>().material.color = Color.black;
         }
     }
 }

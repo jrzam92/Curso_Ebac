@@ -5,26 +5,26 @@ using UnityEngine;
 public class Script5 : MonoBehaviour
 {
 
-    public boolx3 ownBool3;
-    public boolx4 ownBool4;
-    private bool ownBool5;
-    public GameObject prefab_cube;
+    public Script3 Bool3;
+    public Script4 Bool4;
+    public bool ownBool5;
+   
     private void FixedUpdate()
     {
 
 
-        if (ownBool3.Bool_3 || ownBool4.Bool_4)
+        if (Bool3.Bool_3 || Bool4.Bool_4)
         {
              
             ownBool5 = true;
-            prefab_cube.GetComponent<Renderer>().material.color = Color.green;
+            GetComponent<MeshRenderer>().material.color = Color.white;
         }
 
 
-        else if (ownBool3.Bool_3 && ownBool4.Bool_4)
+        else if (Bool3.Bool_3 && Bool4.Bool_4)
         {
             ownBool5 = false;
-            prefab_cube.GetComponent<Renderer>().material.color = Color.gray;
+            GetComponent<MeshRenderer>().material.color = Color.black;
         }
 
 
