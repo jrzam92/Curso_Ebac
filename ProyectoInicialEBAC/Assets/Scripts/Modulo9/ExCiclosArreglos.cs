@@ -12,9 +12,9 @@ public class ExCiclosArreglos : MonoBehaviour
     
     private void FixedUpdate()
     {
-        ejercicio1();
+        //ejercicio1();
         //ejercicio2();
-        //ejercicio3();
+        ejercicio3();
     }
 
 
@@ -78,7 +78,7 @@ public class ExCiclosArreglos : MonoBehaviour
         string oracionCompleta = "";
         foreach (string palabra in palabras)
         {
-            oracionCompleta += palabra;
+            oracionCompleta += palabra+" ";
         
         } 
         print(oracionCompleta);
@@ -95,37 +95,20 @@ public class ExCiclosArreglos : MonoBehaviour
     public void ejercicio3()
     {
         GetComponent<MeshRenderer>().material.color = Color.green;
-        int[,] matriz = new int[,]
+        int[,] matriz = new int[2,2]
         {
-            { 1, 2, 3 },
-            { 4, 5, 6 }
+            { 1, 2 },
+            { 4, 5 }
         };
 
         
-        int[] vector = new int[] { 2, 3 };
+        int[] vector = new int[2] { 2, 3};
 
-        
-        if (vector.Length != matriz.GetLength(0))
-        {
-            print("El tamaño del vector no coincide con el número de renglones de la matriz.");
-            return;
-        }
+        var res1 = matriz[0, 0] * vector[0] + matriz[0, 1] * vector[1];
+        var res2 = matriz[1, 0] * vector[0] + matriz[1, 1] * vector[1];
 
-       
-        int[] resultado = new int[matriz.GetLength(1)]; 
-        for (int i = 0; i < matriz.GetLength(0); i++) 
-        {
-            for (int j = 0; j < matriz.GetLength(1); j++) 
-            {
-                resultado[j] += matriz[i, j] * vector[i]; 
-            }
-        }
+        print (res1);
+        print (res2);
 
-         
-        print("Resultado de la multiplicación matriz-vector:");
-        foreach (int elemento in resultado)
-        {
-            print(elemento + " ");
-        }
     }
 }
