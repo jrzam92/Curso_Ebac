@@ -21,15 +21,14 @@ public class EjercicioEstructuras : MonoBehaviour
         //    print(item);
         //}
 
-        List<string> list = new List<string>();
-        var miListHashCollect = miHashCollect(list);
-        foreach (string item in miListHashCollect)
-        {
-            print(item);
-        }
-        //miStackCollect();
-        //miQueue();
+        //List<string> list = new List<string>();
+        //var miListHashCollect = miHashCollect(list);
+        //foreach (string item in miListHashCollect)
+        //{
+        //    print(item);
+        //}
 
+        miStackQueue();
     }
 
     /// <summary>
@@ -82,40 +81,28 @@ public class EjercicioEstructuras : MonoBehaviour
         list.Add("Toad");
         list.Add("Toad");
          
-        return list.ToHashSet().Distinct().ToHashSet();
+        return list.ToHashSet();
     }
 
-    public void miStackCollect()
-    {
-        Stack my_stack = new Stack();
-
-        // Adding elements in the Stack
-        // Using Push method
-        my_stack.Push("PS3");
-        my_stack.Push("PS4");
-        my_stack.Push("PS5");
-        foreach(var item in my_stack)
-        {
-            print(item);
-        }
-        print(my_stack.Pop());
-        print(my_stack.Peek());
-       
-    }
-    public void miQueue()
+    
+    public void miStackQueue()
     {
         Queue queue = new Queue();
-        queue.Enqueue("Goku");
-        queue.Enqueue("Vegeta");
-        queue.Enqueue("Broli");
-        queue.Enqueue("Picoro");
-        queue.Enqueue("Gohan");
+        Stack stack = new Stack();
+        stack.Push("Goku");
+        stack.Push("Vegeta");
+        stack.Push("Broli");
+        stack.Push("Picoro");
+        stack.Push("Gohan");
+        foreach (var item in stack)
+        {
+            queue.Enqueue(item);
+        }
+        
         foreach (var item in queue)
         {
-            print(item);
+            print($"Queue ... {item}");
         }
-        print(queue.Dequeue());
-        print(queue.Peek());
         
 
 
